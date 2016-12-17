@@ -23,7 +23,7 @@ app.post('/login', function (req, res)
       }
       else 
       {
-           console.log("User " + req.body.Username + " just logged in");
+           console.log("User " + req.body.Username + " failed to log in");
            obj.data = false;
       }
       res.send(JSON.stringify(obj));
@@ -56,7 +56,7 @@ app.post('/addMovie', function (req, res)
        let obj = new Object();
        if(callback == null)
        {
-            console.log("Added movie " + req.body.Name + " for user with id : " + req.body.UserId);
+            console.log("Added movie " + req.body.Name + " with rating: "+req.body.Rating + " for user with id : " + req.body.UserId);
             obj.data = "success";
        }
        else
@@ -104,12 +104,12 @@ app.post('/deleteMovie', function (req, res)
        let obj = new Object();
        if(callback == null)
        {
-            console.log("Deleted movie with id : " + req.body.Id);
-             obj.data = "success";
+            console.log("Deleted movie with id : " + req.body.MovieId);
+            obj.data = "success";
        }
        else
        {
-            console.log("Failed to delete movie with id : " + req.body.Id);
+            console.log("Failed to delete movie with id : " + req.body.MovieId);
             obj.data = callback;
        }
        res.send(JSON.stringify(obj));
